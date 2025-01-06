@@ -42,8 +42,7 @@ class Chatbot():
 
                 if video_url:
                     # Kirim video ke chat Telegram
-                    await update.message.reply_video(video_url)
-                    await update.message.reply_text("terimakasih sudah menggunakan wanz_tiktok_downloader!")
+                    await update.message.reply_video(video_url, caption="di unduh menggunakan:\n@wantz_downloader_bot")
                 else:
                     await update.message.reply_text("Video tidak di kenali!, gagal generate")
             else:

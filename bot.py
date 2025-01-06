@@ -11,7 +11,7 @@ class Chatbot():
         self.bot_token = bot_token
 
     async def start(self,update:Update, context:CallbackContext):
-        await update.message.reply_text('Hallo, aku adakah bot yang bisa generate video tiktok dari link,tanpa wm!')
+        await update.message.reply_text('hallo selamat datang di @wantz_downloader_bot\ndengan bot ii anda bisa mengunduh video tiktok tampa wm gratis!,dengan cara command:\n\n/download <link>')
 
     async def echo(self,update:Update,context:CallbackContext):
         await update.message.reply_text("untuk mendownload silahkan ketik command:\n /download <link>")

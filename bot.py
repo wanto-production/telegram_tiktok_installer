@@ -11,10 +11,10 @@ class Chatbot():
         self.bot_token = bot_token
 
     async def start(self,update:Update, context:CallbackContext):
-        await update.message.reply_text('hallo selamat datang di @wantz_downloader_bot\n\ndengan bot ini anda bisa mengunduh video tiktok tanpa wm secara gratis!,dengan cara command:\n\n/download <link>')
+        await update.message.reply_text('hallo selamat datang di @free_downloader_tiktok_bot\n\ndengan bot ini anda bisa mengunduh video tiktok tanpa wm secara gratis!,dengan cara command:\n\n/d <link>')
 
     async def echo(self,update:Update,context:CallbackContext):
-        await update.message.reply_text("untuk mendownload silahkan ketik command:\n /download <link>")
+        await update.message.reply_text("untuk mendownload silahkan ketik command:\n\n /d <link>")
 
     async def install_vid(self,update:Update,context:CallbackContext):
         if len(context.args[0]) == 0:
@@ -32,7 +32,7 @@ class Chatbot():
                 'hd':'0'
            },
            headers={
-                'x-rapidapi-key':'f2b7c2c7b0msh665b784ea72a3d9p10c62fjsneed998c5e205',
+                'x-rapidapi-key':os.getenv('RAPID_APIKEY'),
                 'x-rapidapi-host': 'tiktok-download-without-watermark.p.rapidapi.com'
            })
 
@@ -42,7 +42,7 @@ class Chatbot():
 
                 if video_url:
                     # Kirim video ke chat Telegram
-                    await update.message.reply_video(video_url, caption="di unduh menggunakan:\n@wantz_downloader_bot")
+                    await update.message.reply_video(video_url, caption="di unduh menggunakan:\n@free_downloader_tiktok_bot")
                 else:
                     await update.message.reply_text("Video tidak di kenali!, gagal generate")
             else:
@@ -53,7 +53,7 @@ class Chatbot():
 
         app.add_handler(CommandHandler('start',self.start))
         app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND,self.echo))
-        app.add_handler(CommandHandler('download',self.install_vid))
+        app.add_handler(CommandHandler('d',self.install_vid))
 
         app.run_polling()
 
